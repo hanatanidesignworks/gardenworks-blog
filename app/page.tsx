@@ -1,8 +1,23 @@
-export default function Home() {
+import Hero from '@/components/Hero';
+import Header from '@/components/Header';
+import FirstView from '@/components/FirstView';
+import { supabase } from '@/lib/supabaseClient';
+
+export default async function Home() {
+  const { data: posts, error} = await supabase
+        .from('posts')
+        .select('*')
+        .order('created_at', { ascending: false});
+
+    if (error) {
+        return <div>データ取得エラー: {String(error.message)}</div>
+    }
+
   return (
-     <main className="p-6">
-      <h1 className="text-3xl font-bold text-green-600">Tailwind動作OK</h1>
-      <p className="mt-2">最小構成にスリム化しました。</p>
-    </main>
+      <main>
+        <Header />
+        <FirstView />
+        <Hero posts={posts}/>
+      </main>
   );
 }

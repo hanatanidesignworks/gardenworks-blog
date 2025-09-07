@@ -30,11 +30,11 @@ export default function Hero({ posts }: { posts: Post[] }) {
                  transition={{ duration: 0.35, delay: i * 0.2 }} 
                  className='flex flex-row gap-2 max-w-sm w-[350px] md:w-[370px] bg-white rounded-xl shadow-md overflow-hidden mt-4 p-4 hover:bg-gray-100'
             >
-                <div className='w-[100px] h-[100px] border'>
+                <div className='w-[50px] h-[50px] aspect-[1/1]'>
                     <img
-                        src={post.image_url}
+                        src={post.image_url?.trim() || 'https://tnvedtpqxtghrjvzilrb.supabase.co/storage/v1/object/public/post-images/public/noimage.jpg'}
                         alt={post.title ?? 'image'}
-                        className='w-full object-cover'
+                        className='w-[50px] h-[50px] object-cover'
                     />
                 </div>
                 <div>

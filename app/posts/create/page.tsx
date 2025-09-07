@@ -55,7 +55,6 @@ export default function CreatePost() {
                 {loading ? '保存中...' : '保存'}
             </button>
 
-            // 例：一時ボタン
             <button
             type="button"
             onClick={async () => {
